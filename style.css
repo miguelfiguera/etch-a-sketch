@@ -20,15 +20,11 @@ div.body {
     grid-column: 1/11;
     grid-row: 2/8;
     background-color: black;
-    display:flex;
-    flex-flow: column , wrap;
 }
 
-div.left
-div.right
-
 div.footer {
-    grid-column: 1 / 11;
+    grid-column: 1/11;
     grid-row: 8/9;
     background-color: black;
+    color: white;
 }
