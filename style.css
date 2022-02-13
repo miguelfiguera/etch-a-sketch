@@ -27,9 +27,8 @@ div.body {
 div.left
 div.right
 
-
 div.footer {
-    grid-column: 1/11;
-    grid-row: 8/10;
+    grid-column: 1 / 11;
+    grid-row: 8/9;
     background-color: black;
 }
