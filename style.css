@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+div#general {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    background-color: white;
+    grid-gap: 10px;
+}
+div.header {
+    grid-column: 1 / 11;
+    grid-row : 1/2;
+    background-color: black;
+}
+
+div.body {
+    grid-column: 1/11;
+    grid-row: 2/8;
+    background-color: black;
+    display:flex;
+    flex-flow: column , wrap;
+}
+
+div.left
+div.right
+
+
+div.footer {
+    grid-column: 1/11;
+    grid-row: 8/10;
+    background-color: black;
+}
