@@ -1,30 +1,35 @@
+:root{
+    --dark: #333;
+    --light: #ededed;
+    --light2: #fefefe;
+}
+
 * {
-    box-sizing: border-box;
-    color: white;
+box-sizing: border-box;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-div#general {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    background-color: white;
-    grid-gap: 10px;
-}
-div.header {
-    grid-column: 1 / 11;
-    grid-row : 1/2;
-    background-color: black;
+body {
+display:grid;
+grid-template-columns: repeat(12,1fr);
+grid-auto-rows: minmax(auto,100px);
 }
 
-div.body {
-    grid-column: 1/11;
+header {
+    justify-content: center;
+    text-align: center;
+    grid-column: 1/13;
+    grid-row: 1/2;
+}
+
+div#mainBody {
+    grid-column: 1/13;
     grid-row: 2/8;
-    background-color: black;
 }
 
-div.footer {
-    grid-column: 1/11;
+footer {
+    justify-content: center;
+    text-align: center;
+    grid-column: 1/13;
     grid-row: 8/9;
-    background-color: black;
-    color: white;
 }
