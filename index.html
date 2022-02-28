@@ -14,25 +14,27 @@
     </header>
     <div id="mainBody">
         <div id="optionsPanel">
-            <input id="colorSelection" type="color" value="333333"/>
-            <button class="colorMode">Color Mode</button>
-            <button class="rainbowMode">Rainbow Mode</button>
-            <button class="eraser">Eraser</button>
-            <button class="clearGrid">Clear Grid</button>
-            <div id=size> 16x16 </div>
-            <input id=sizeSelection type="range" value="16" min="1" max="90">
+            <input id="colorSelection" type="color" value="#000000"/>
+            <button id="colorMode">Color Mode</button>
+            <button id="rainbowMode">Rainbow Mode</button>
+            <button id="eraser">Eraser</button>
+            <button id="clearGrid">Clear Grid</button>
+            <div id=size></div>
+            <input id=sizeSelection type="range" value="24" min="1" max="90">
         </div>
         <div id="gridDiv"></div>
         <div id=optionsPanel2>
             <input type="color" name="Background Color" id="backgroundColor" value="#ededed">
-            <button class="colourGrabber"> Color Grabber</button>
-            <button class="shading"> Shading</button>
-            <button class="lighten"> Lighten</button>
-            <button class="gridLines">Grid Lines</button>
+            <button id="colourGrabber"> Color Grabber</button>
+            <button id="shading"> Shading</button>
+            <button id="lighten"> Lighten</button>
+            <button id="gridLines">Grid Lines</button>
         </div>
     </div>
     <footer id="theFooter">
-        <p id="copywrite"> Copywrite © <a id="linkToGithub" href="https://github.com/miguelfiguera/etch-a-sketch">miguelfiguera</a> </p>
+        <p id="copywrite"> Copywrite © 
+            <a id="linkToGithub" href="https://github.com/miguelfiguera?tab=repositories">miguelfiguera</a>
+        </p>
     </footer>
     
 </body>
