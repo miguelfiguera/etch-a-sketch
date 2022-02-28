@@ -2,18 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <title>etch a sketch</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
 </head>
 <body>
-    <div id="general">
-        <div class="header"></div>
-        <div class="body">
-            <div class="left panel"></div>
-            <div class="right panel"></div>
+    <header class=header>
+        <h1> Etch-a-Sketch </h1>
+    </header>
+    <div id="mainBody">
+        <div id="optionsPanel">
+            <input id="colorSelection" type="color" value="333333"/>
+            <button class="button colorMode">Color Mode</button>
+            <button class="button rainbowMode">Rainbow Mode</button>
+            <button class="button clearGrid">Clear Grid</button>
+            <div id=size> 16x16 </div>
+            <input id=sizeSelection type="range" value="16" min="1" max="90">
         </div>
-        <div class="footer"></div>
+        <div id="gridDiv"></div>
     </div>
+    <footer id="theFooter">
+        <p id="copywrite"></p>
+    </footer>
+    
 </body>
 </html>
