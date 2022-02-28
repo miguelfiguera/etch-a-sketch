@@ -7,29 +7,106 @@
 * {
 box-sizing: border-box;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
+color: var(--light);
 }
 
 body {
 display:grid;
 grid-template-columns: repeat(12,1fr);
 grid-auto-rows: minmax(auto,100px);
+background-color: var(--dark);
 }
 
+/*header*/
 header {
     justify-content: center;
     text-align: center;
+    align-content: center;
     grid-column: 1/13;
     grid-row: 1/2;
 }
 
+/*the body*/
+
 div#mainBody {
     grid-column: 1/13;
     grid-row: 2/8;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 40px;
 }
 
+div#optionsPanel { 
+height: 500px;
+width: 180px;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+ align-items: center;
+ border-color: #080808;
+}
+
+div#optionsPanel2 {
+    height: 415px;
+width: 180px;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+ align-items: center;
+ border-color: #080808;
+}
+
+button {
+    border-radius: 20px;
+    border-style: solid;
+    border: 2px;
+    width: 180px;
+    font-size: 24px;
+    height: 60px;
+    color: var(--dark);
+}
+
+button.active {
+    color: #ededed;
+    background-color: black;
+    border-radius: 20px;
+    border-style: solid;
+    border: 2px;
+    width: 180px;
+    font-size: 24px;
+    height: 60px;
+}
+
+
+input#colorSelection {
+    width: 90px;
+    height: 90px;
+    border: none;
+    border-radius: 50px;
+}
+input#backgroundColor {
+    width: 90px;
+    height: 90px;
+    border: none;
+    border-radius: 50px;
+
+}
+
+div#gridDiv {
+width: 500px;
+height: 500px;
+border-style: solid;
+border: 10px;
+border-color: black;
+background-color: var(--light);
+box-shadow: #080808 4px;
+}
+
+/*footer*/
 footer {
     justify-content: center;
     text-align: center;
     grid-column: 1/13;
     grid-row: 8/9;
+    font-size: 20px;
 }
