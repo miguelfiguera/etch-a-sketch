@@ -10,7 +10,12 @@ const shading= document.getElementById("shading");
 const lighten= document.getElementById("lighten");
 const viewGridLines = document.getElementById("gridLines");
 const sizeSlider=document.getElementById("sizeSelection");
+const colorSelection = document.getElementById("colorSelection");
+const buttons= document.getElementsByTagName("button");
+const BgColorSelector = document.getElementById ("backgroundColor");
 let sizeNumber = document.getElementById ("size");
+let colorValue = colorSelection.value;
+
 
 //grid creation
 const grid=document.getElementById("gridDiv");
@@ -27,6 +32,51 @@ function eraseGrid() {
     grid.innerHTML = "";
 }
 
+
+//mouse events
+
+//button active - deactive
+function deactiveButton() {
+    buttons.classname = "";
+}
+
+//changing color function
+
+function color() {
+gridSquare.style.backgroundColor = colorValue;
+}
+
+//rainbow function
+
+
+//color grabber function
+
+//shading & ligthen function
+
+//eraser function
+
+function drawingEraser() {
+    gridSquare.style.backgroundColor = "#ededed";
+}
+
+//clear grid function
+function backgroundReset() {
+    grid.style.backgroundColor = "#ededed";
+    BgColorSelector.value = "#ededed";
+}
+function clearTheGrid() {
+    eraseGrid();
+    backgroundReset();
+    createGrid();
+}
+
 //Slider function
 sizeNumber.innerText = sizeSlider.value + " x " + sizeSlider.value;
 sizeSlider.onchange = () => {sizeNumber.innerText = sizeSlider.value + " x " + sizeSlider.value; eraseGrid();createGrid()}
+
+//color selectors functions
+BgColorSelector.onchange = () => {grid.style.backgroundColor = BgColorSelector.value;}
+
+//button's functions
+
+clearGrid.onclick = () => {clearTheGrid();}

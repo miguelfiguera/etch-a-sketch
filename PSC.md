@@ -27,3 +27,9 @@ c - footer with a link to my github account. (lets put my name on it).
 
 I will use the correct tool for every part. HTML to give form, CSS for the style and JS to the
 interactions with the page.
+
+
+FOR button.active:
+get element (done withe the document.getelementbyide)
+add class if
+else remove class.
