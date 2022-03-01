@@ -1,5 +1,15 @@
 window.onload = () => {createGrid() /*;alert("Welcome to your pixel Canvas")*/};
 
+//color const
+const DARK = "#333333";
+const LIGTH = "#ededed";
+const LIGTH2= "#fefefe";
+
+//default initials...
+
+const INITIAL = "color";
+let currentMode = INITIAL
+
 //button const
 const colorMode = document.getElementById("colorMode");
 const rainbowMode= document.getElementById("rainbowMode");
@@ -17,23 +27,48 @@ let sizeNumber = document.getElementById ("size");
 let colorValue = colorSelection.value;
 
 
-//grid creation
+//grid creation - destruction
 const grid=document.getElementById("gridDiv");
 function createGrid() {
     grid.style.gridTemplateColumns = `repeat(${sizeSlider.value}, 1fr)`;
     grid.style.gridTemplateRows= `repeat(${sizeSlider.value}, 1fr)`; 
     for(let i=0; i < sizeSlider.value * sizeSlider.value; i++) {
         let gridSquare = document.createElement("div");
+        gridSquare.addEventListener("mouseover" , changingTheColor);
+        gridSquare.addEventListener("mousedown", changingTheColor);
         grid.appendChild(gridSquare);
     } 
 }
-
 function eraseGrid() {
     grid.innerHTML = "";
 }
 
-
 //mouse events
+let theMouse = false;
+document.body.onmousedown = () => {theMouse= true;}
+document.body.onmouseup = () => {theMouse= false;}
+
+//color functions:
+
+function changingTheColor(e) {
+    if  (currentMode === "color" && theMouse === true){
+         e.target.style.backgroundColor = colorSelection.value;
+    }
+    else if (currentMode === "eraser" && theMouse === true){ 
+         e.target.style.backgroundColor = BgColorSelector.value;
+    }
+    else if (currentMode === "colorGrabber" && theMouse === true){
+        selectedColor = e.target.style.backgroundColor;
+        rgbString = selectedColor.toString(16);
+        replacedRGB =rgbString.replace(/,/g," ");
+        noRGB = replacedRGB.replace("rgb" , "");
+        noParenthesis = noRGB.replace("(","");
+        noParenthesis2= noParenthesis.replace (")", "");
+        console.log(noParenthesis2);   
+        //colorSelection.value = newColor;
+    }
+    else { return};
+}
 
 //button active - deactive
 function deactiveButton() {
@@ -41,7 +76,6 @@ function deactiveButton() {
 }
 
 //changing color function
-
 function color() {
 gridSquare.style.backgroundColor = colorValue;
 }
@@ -49,15 +83,13 @@ gridSquare.style.backgroundColor = colorValue;
 //rainbow function
 
 
-//color grabber function
+//color grabber function (rgb to hex)
+function rgbToHex (r,g,b) {
+    return 
+}
 
 //shading & ligthen function
 
-//eraser function
-
-function drawingEraser() {
-    gridSquare.style.backgroundColor = "#ededed";
-}
 
 //clear grid function
 function backgroundReset() {
@@ -80,3 +112,6 @@ BgColorSelector.onchange = () => {grid.style.backgroundColor = BgColorSelector.v
 //button's functions
 
 clearGrid.onclick = () => {clearTheGrid();}
+colorMode.onclick = () => {currentMode = "color"; changingTheColor();}
+eraser.onclick = () => {currentMode = "eraser"; changingTheColor();}
+colorGrabber.onclick = () => {currentMode = "colorGrabber" ; changingTheColor();}
