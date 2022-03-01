@@ -1,3 +1,4 @@
+window.onload = () => {createGrid() /*;alert("Welcome to your pixel Canvas")*/};
 
 //button const
 const colorMode = document.getElementById("colorMode");
@@ -13,13 +14,11 @@ let sizeNumber = document.getElementById ("size");
 
 //grid creation
 const grid=document.getElementById("gridDiv");
-grid.style.display = "grid";
-
 function createGrid() {
-    grid.style.gridTemplateColumns = 'repeat(${sizeSlider.value}, 1fr)';
-    grid.style.gridTemplateRows= 'repeat(${sizeSlider.value}, 1fr)'; 
+    grid.style.gridTemplateColumns = `repeat(${sizeSlider.value}, 1fr)`;
+    grid.style.gridTemplateRows= `repeat(${sizeSlider.value}, 1fr)`; 
     for(let i=0; i < sizeSlider.value * sizeSlider.value; i++) {
-        const gridSquare = document.createElement("div");
+        let gridSquare = document.createElement("div");
         grid.appendChild(gridSquare);
     } 
 }

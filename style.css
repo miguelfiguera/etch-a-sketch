@@ -11,7 +11,6 @@ color: var(--light);
 }
 
 body {
-display:grid;
 grid-template-columns: repeat(12,1fr);
 grid-auto-rows: minmax(auto,100px);
 background-color: var(--dark);
@@ -22,15 +21,11 @@ header {
     justify-content: center;
     text-align: center;
     align-content: center;
-    grid-column: 1/13;
-    grid-row: 1/2;
 }
 
 /*the body*/
 
 div#mainBody {
-    grid-column: 1/13;
-    grid-row: 2/8;
     display: flex;
     justify-content: space-evenly;
     margin: 40px;
@@ -92,7 +87,9 @@ input#backgroundColor {
 
 }
 
+/* the grid*/
 div#gridDiv {
+display: grid;
 width: 500px;
 height: 500px;
 border-style: solid;
@@ -106,7 +103,5 @@ box-shadow: #080808 4px;
 footer {
     justify-content: center;
     text-align: center;
-    grid-column: 1/13;
-    grid-row: 8/9;
     font-size: 20px;
 }
