@@ -36,6 +36,7 @@ function createGrid() {
         let gridSquare = document.createElement("div");
         gridSquare.addEventListener("mouseover" , changingTheColor);
         gridSquare.addEventListener("mousedown", changingTheColor);
+        gridSquare.style.backgroundColor = LIGTH;
         grid.appendChild(gridSquare);
     } 
 }
@@ -59,21 +60,24 @@ function changingTheColor(e) {
     }
     else if (currentMode === "colorGrabber" && theMouse === true){
         selectedColor = e.target.style.backgroundColor;
-        rgbString = selectedColor.toString(16);
+        rgbString = selectedColor.toString();
         noRGB = rgbString.replace("rgb" , "");
         noParenthesis = noRGB.replace("(","");
         noParenthesis2= noParenthesis.replace (")", "");
         noSpaces=noParenthesis2.replace(/ /g,"");
-        let RGB = noSpaces.split(","); 
-        r=RGB[0].toString(16);
-        g=RGB[1].toString(16);
-        b=RGB[2].toString(16);
-        if(r.length == 1) { r = "0" + r;}
-        if(g.length == 1) { g = "0" + g;}
-        if(b.length == 1) { b = "0" + b;}
-        newColor = "#" + r + g + b;
-        console.log(newColor);
-       // colorSelection.value = newColor;
+        let rgbArray = noSpaces.split(","); 
+        console.log(rgbArray);
+       let r = parseInt(rgbArray[0]);
+       let g = parseInt(rgbArray[1]);
+       let b = parseInt(rgbArray[2]);
+       let R= r.toString(16);
+       let G= g.toString(16);
+       let B= b.toString(16);
+        if(R.length == 1) { R = "0" + R;}
+        if(G.length == 1) { G = "0" + G;}
+        if(B.length == 1) { B = "0" + B;}
+        newColor = "#" + R+ G+ B;
+        colorSelection.value = newColor;
     }
     else { return};
 }
