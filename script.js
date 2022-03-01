@@ -60,12 +60,20 @@ function changingTheColor(e) {
     else if (currentMode === "colorGrabber" && theMouse === true){
         selectedColor = e.target.style.backgroundColor;
         rgbString = selectedColor.toString(16);
-        replacedRGB =rgbString.replace(/,/g," ");
-        noRGB = replacedRGB.replace("rgb" , "");
+        noRGB = rgbString.replace("rgb" , "");
         noParenthesis = noRGB.replace("(","");
         noParenthesis2= noParenthesis.replace (")", "");
-        console.log(noParenthesis2);   
-        //colorSelection.value = newColor;
+        noSpaces=noParenthesis2.replace(/ /g,"");
+        let RGB = noSpaces.split(","); 
+        r=RGB[0].toString(16);
+        g=RGB[1].toString(16);
+        b=RGB[2].toString(16);
+        if(r.length == 1) { r = "0" + r;}
+        if(g.length == 1) { g = "0" + g;}
+        if(b.length == 1) { b = "0" + b;}
+        newColor = "#" + r + g + b;
+        console.log(newColor);
+       // colorSelection.value = newColor;
     }
     else { return};
 }
