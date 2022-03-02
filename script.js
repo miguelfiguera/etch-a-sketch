@@ -87,7 +87,7 @@ function changingTheColor(e) {
        let blue =  Math.floor(Math.random()*256);
        e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     }
-    else if (currentMode == "shading") {
+    else if (currentMode === "shading") {
         selectedColor = e.target.style.backgroundColor;
         rgbString = selectedColor.toString();
         noRGB = rgbString.replace("rgb" , "");
@@ -108,7 +108,7 @@ function changingTheColor(e) {
         e.target.style.backgroundColor = newColor;
 
     }
-    else if (currentMode == "lighten"){
+    else if (currentMode === "lighten"){
         selectedColor = e.target.style.backgroundColor;
         rgbString = selectedColor.toString();
         noRGB = rgbString.replace("rgb" , "");
