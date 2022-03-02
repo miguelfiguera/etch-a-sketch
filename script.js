@@ -149,17 +149,25 @@ function activeButton() {
 
 
 //visible grid
+viewGridLines.classList.add ("inactive");
 function visibleGrid (){
-    if (viewGridLines.classList ==""){
-        gridSquare.style.borderStyle ="solid";
-        gridSquare.style.borderColor = "#333333";
-        viewGridLines.classList.add("active");
+    if (viewGridLines.classList == "inactive") {
+    squares = document.getElementsByClassName("gridDivs");
+    viewGridLines.classList.remove("inactive");
+    viewGridLines.classList.add("active");
+    for (i=0 ;  i < sizeSlider.value * sizeSlider.value ; i++){
+        squares[i].classList.add("gridDivs2");
     }
-    else if (viewGridLines.classList == "active"){
-        gridSquare.style.borderStyle ="none";
-        gridSquare.style.borderColor = BgC.olorSelector.value;
-        viewGridLines.classList.remove("active");
+}
+    else if (viewGridLines.classList == "active") {
+        squares = document.getElementsByClassName("gridDivs");
+    viewGridLines.classList.remove("active");
+    viewGridLines.classList.add("inactive");
+    for (i=0 ;  i < sizeSlider.value * sizeSlider.value ; i++){
+        squares[i].classList.remove("gridDivs2");
     }
+}
+    else {return}
 }
 
 //shading & ligthen function

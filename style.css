@@ -99,10 +99,10 @@ background-color: var(--light);
 box-shadow: #080808 4px;
 }
 
-.gridDivs {
+.gridDivs.gridDivs2 {
     border-color:#333;
     border-style: solid;
-    border: 1px;
+    border: thin solid;
 
 }
 
