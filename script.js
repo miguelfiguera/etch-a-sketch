@@ -162,12 +162,12 @@ function activeButton() {
         rainbowMode.classList.remove("active");
     }
     else if (currentMode == "shading") {
-        shading.classList.add("active");
         colorMode.classList.remove("active");
         colorGrabber.classList.remove("active");
         eraser.classList.remove("active");
         lighten.classList.remove("active");
         rainbowMode.classList.remove("active");
+        shading.classList.add("active");
     }
     else if(currentMode == "lighten") {
         lighten.classList.add("active");
@@ -237,6 +237,6 @@ colorMode.onclick = () => {currentMode = "color";activeButton();changingTheColor
 eraser.onclick = () => {currentMode = "eraser"; activeButton();changingTheColor();}
 colorGrabber.onclick = () => {currentMode = "colorGrabber" ;activeButton(); changingTheColor();}
 rainbowMode.onclick = () => {currentMode = "rainbowMode" ;activeButton(); changingTheColor();}
-shading.onclick = () => {currentMode = "shading"; activeButton; changingTheColor();}
-lighten.onclick = () => {currentMode = "lighten"; activeButton; changingTheColor();}
+shading.onclick = () => {currentMode = "shading"; activeButton(); changingTheColor();}
+lighten.onclick = () => {currentMode = "lighten"; activeButton(); changingTheColor();}
 viewGridLines.onclick = () => { visibleGrid();}
