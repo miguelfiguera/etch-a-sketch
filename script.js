@@ -1,4 +1,4 @@
-window.onload = () => {createGrid();activeButton() /*;alert("Welcome to your pixel Canvas")*/};
+window.onload = () => {createGrid();activeButton();visibleGrid() /*;alert("Welcome to your pixel Canvas")*/};
 
 //color const
 const DARK = "#333333";
@@ -79,7 +79,7 @@ function changingTheColor(e) {
         newColor = "#" + R+ G+ B;
         colorSelection.value = newColor;
     }
-    else if (currentMode == "rainbowMode"){
+    else if (currentMode == "rainbowMode" && theMouse==true){
         do{
         let red = Math.floor(Math.random()*256);
         let green = Math.floor(Math.random()*256);
@@ -90,6 +90,47 @@ function changingTheColor(e) {
         let randomColor= "#"+redHex+greenHex+blueHex;
         e.target.style.backgroundColor = randomColor;
         } while (currentMode== "rainbowMode" && theMouse===true);
+    }
+    else if (currentMode == "shading" && theMouse===true) {
+        selectedColor = e.target.style.backgroundColor;
+        rgbString = selectedColor.toString();
+        noRGB = rgbString.replace("rgb" , "");
+        noParenthesis = noRGB.replace("(","");
+        noParenthesis2= noParenthesis.replace (")", "");
+        noSpaces=noParenthesis2.replace(/ /g,"");
+        let rgbArray = noSpaces.split(","); 
+       let r = parseInt(rgbArray[0]) - 15;
+       let g = parseInt(rgbArray[1]) - 15;
+       let b = parseInt(rgbArray[2]) - 15;
+       let R= r.toString(16);
+       let G= g.toString(16);
+       let B= b.toString(16);
+        if(R.length == 1) { R = "0" + R;}
+        if(G.length == 1) { G = "0" + G;}
+        if(B.length == 1) { B = "0" + B;}
+        newColor = "#" + R+ G+ B;
+        e.target.style.backgroundColor = newColor;
+
+    }
+    else if (currentMode == "lighten" && theMouse===true){
+        selectedColor = e.target.style.backgroundColor;
+        rgbString = selectedColor.toString();
+        noRGB = rgbString.replace("rgb" , "");
+        noParenthesis = noRGB.replace("(","");
+        noParenthesis2= noParenthesis.replace (")", "");
+        noSpaces=noParenthesis2.replace(/ /g,"");
+        let rgbArray = noSpaces.split(","); 
+       let r = parseInt(rgbArray[0]) + 15;
+       let g = parseInt(rgbArray[1]) + 15;
+       let b = parseInt(rgbArray[2]) + 15;
+       let R= r.toString(16);
+       let G= g.toString(16);
+       let B= b.toString(16);
+        if(R.length == 1) { R = "0" + R;}
+        if(G.length == 1) { G = "0" + G;}
+        if(B.length == 1) { B = "0" + B;}
+        newColor = "#" + R+ G+ B;
+        e.target.style.backgroundColor = newColor;
     }
     else { return};
 }
@@ -145,8 +186,7 @@ function activeButton() {
         rainbowMode.classList.add("active")
     }
     else { return }
-}
-
+} 
 
 //visible grid
 viewGridLines.classList.add ("inactive");
@@ -197,6 +237,6 @@ colorMode.onclick = () => {currentMode = "color";activeButton();changingTheColor
 eraser.onclick = () => {currentMode = "eraser"; activeButton();changingTheColor();}
 colorGrabber.onclick = () => {currentMode = "colorGrabber" ;activeButton(); changingTheColor();}
 rainbowMode.onclick = () => {currentMode = "rainbowMode" ;activeButton(); changingTheColor();}
+shading.onclick = () => {currentMode = "shading"; activeButton; changingTheColor();}
+lighten.onclick = () => {currentMode = "lighten"; activeButton; changingTheColor();}
 viewGridLines.onclick = () => { visibleGrid();}
-//shading.onclick
-//lighten.onclick
