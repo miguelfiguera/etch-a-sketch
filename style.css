@@ -11,8 +11,6 @@ color: var(--light);
 }
 
 body {
-grid-template-columns: repeat(12,1fr);
-grid-auto-rows: minmax(auto,100px);
 background-color: var(--dark);
 }
 
@@ -100,10 +98,7 @@ box-shadow: #080808 4px;
 }
 
 .gridDivs.gridDivs2 {
-    border-color:#333;
-    border-style: solid;
-    border: thin solid;
-
+    border: 1px solid #b3aaaa;
 }
 
 /*footer*/
