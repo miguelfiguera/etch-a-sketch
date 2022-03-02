@@ -79,7 +79,7 @@ function changingTheColor(e) {
         newColor = "#" + R+ G+ B;
         colorSelection.value = newColor;
     }
-    else if (currentMode == "rainbowMode" && theMouse==true){
+    else if (currentMode == "rainbowMode"){
         do{
         let red = Math.floor(Math.random()*256);
         let green = Math.floor(Math.random()*256);
@@ -87,7 +87,7 @@ function changingTheColor(e) {
         let redHex= red.toString(16);
         let greenHex= green.toString(16);
         let blueHex= blue.toString(16);
-        let randomColor= "#"+redHex+greenHex+blueHex;
+        randomColor= "#"+redHex+greenHex+blueHex;
         e.target.style.backgroundColor = randomColor;
         } while (currentMode== "rainbowMode" && theMouse===true);
     }
@@ -209,9 +209,6 @@ function visibleGrid (){
 }
     else {return}
 }
-
-//shading & ligthen function
-
 
 //clear grid function
 function backgroundReset() {
