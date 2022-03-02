@@ -34,8 +34,8 @@ function createGrid() {
     grid.style.gridTemplateRows= `repeat(${sizeSlider.value}, 1fr)`; 
     for(let i=0; i < sizeSlider.value * sizeSlider.value; i++) {
         let gridSquare = document.createElement("div");
-        gridSquare.addEventListener("mousedown", changingTheColor);
-        gridSquare.addEventListener("mouseover" , changingTheColor);
+        gridSquare.addEventListener("mouseover", changingTheColor);
+        gridSquare.addEventListener("mousedown" , changingTheColor);
         gridSquare.classList.add("gridDivs");
         gridSquare.style.backgroundColor = LIGTH;
         grid.appendChild(gridSquare);
@@ -48,18 +48,20 @@ function eraseGrid() {
 //mouse events
 let theMouse = false;
 document.body.onmousedown = () => {theMouse= true;}
-document.body.onmouseup = () => {theMouse= false;}
+document.body.onmouseup = () => {theMouse= false; theClick = false}
+
 
 //color functions:
 
 function changingTheColor(e) {
-    if  (currentMode === "color" && theMouse === true){
+    if (e.type === "mouseover" && !theMouse) return
+    if (currentMode === "color"){
          e.target.style.backgroundColor = colorSelection.value;
     }
     else if (currentMode === "eraser" && theMouse === true){ 
          e.target.style.backgroundColor = BgColorSelector.value;
     }
-    else if (currentMode === "colorGrabber" && theMouse === true){
+    else if (currentMode === "colorGrabber"){
         selectedColor = e.target.style.backgroundColor;
         rgbString = selectedColor.toString();
         noRGB = rgbString.replace("rgb" , "");
@@ -79,19 +81,13 @@ function changingTheColor(e) {
         newColor = "#" + R+ G+ B;
         colorSelection.value = newColor;
     }
-    else if (currentMode == "rainbowMode"){
-        do{
-        let red = Math.floor(Math.random()*256);
-        let green = Math.floor(Math.random()*256);
-        let blue = Math.floor(Math.random()*256);
-        let redHex= red.toString(16);
-        let greenHex= green.toString(16);
-        let blueHex= blue.toString(16);
-        randomColor= "#"+redHex+greenHex+blueHex;
-        e.target.style.backgroundColor = randomColor;
-        } while (currentMode== "rainbowMode" && theMouse===true);
+    else if (currentMode === "rainbowMode"){
+       let red = Math.floor(Math.random()*256);
+       let green =  Math.floor(Math.random()*256);
+       let blue =  Math.floor(Math.random()*256);
+       e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     }
-    else if (currentMode == "shading" && theMouse===true) {
+    else if (currentMode == "shading") {
         selectedColor = e.target.style.backgroundColor;
         rgbString = selectedColor.toString();
         noRGB = rgbString.replace("rgb" , "");
@@ -112,7 +108,7 @@ function changingTheColor(e) {
         e.target.style.backgroundColor = newColor;
 
     }
-    else if (currentMode == "lighten" && theMouse===true){
+    else if (currentMode == "lighten"){
         selectedColor = e.target.style.backgroundColor;
         rgbString = selectedColor.toString();
         noRGB = rgbString.replace("rgb" , "");
