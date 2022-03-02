@@ -149,7 +149,18 @@ function activeButton() {
 
 
 //visible grid
-
+function visibleGrid (){
+    if (viewGridLines.classList ==""){
+        gridSquare.style.borderStyle ="solid";
+        gridSquare.style.borderColor = "#333333";
+        viewGridLines.classList.add("active");
+    }
+    else if (viewGridLines.classList == "active"){
+        gridSquare.style.borderStyle ="none";
+        gridSquare.style.borderColor = BgC.olorSelector.value;
+        viewGridLines.classList.remove("active");
+    }
+}
 
 //shading & ligthen function
 
@@ -178,5 +189,6 @@ colorMode.onclick = () => {currentMode = "color";activeButton();changingTheColor
 eraser.onclick = () => {currentMode = "eraser"; activeButton();changingTheColor();}
 colorGrabber.onclick = () => {currentMode = "colorGrabber" ;activeButton(); changingTheColor();}
 rainbowMode.onclick = () => {currentMode = "rainbowMode" ;activeButton(); changingTheColor();}
+viewGridLines.onclick = () => { visibleGrid();}
 //shading.onclick
 //lighten.onclick
