@@ -1,4 +1,4 @@
-window.onload = () => {createGrid() /*;alert("Welcome to your pixel Canvas")*/};
+window.onload = () => {createGrid();activeButton() /*;alert("Welcome to your pixel Canvas")*/};
 
 //color const
 const DARK = "#333333";
@@ -34,8 +34,9 @@ function createGrid() {
     grid.style.gridTemplateRows= `repeat(${sizeSlider.value}, 1fr)`; 
     for(let i=0; i < sizeSlider.value * sizeSlider.value; i++) {
         let gridSquare = document.createElement("div");
-        gridSquare.addEventListener("mouseover" , changingTheColor);
         gridSquare.addEventListener("mousedown", changingTheColor);
+        gridSquare.addEventListener("mouseover" , changingTheColor);
+        gridSquare.classList.add("gridDivs");
         gridSquare.style.backgroundColor = LIGTH;
         grid.appendChild(gridSquare);
     } 
@@ -66,7 +67,6 @@ function changingTheColor(e) {
         noParenthesis2= noParenthesis.replace (")", "");
         noSpaces=noParenthesis2.replace(/ /g,"");
         let rgbArray = noSpaces.split(","); 
-        console.log(rgbArray);
        let r = parseInt(rgbArray[0]);
        let g = parseInt(rgbArray[1]);
        let b = parseInt(rgbArray[2]);
@@ -79,26 +79,77 @@ function changingTheColor(e) {
         newColor = "#" + R+ G+ B;
         colorSelection.value = newColor;
     }
+    else if (currentMode == "rainbowMode"){
+        do{
+        let red = Math.floor(Math.random()*256);
+        let green = Math.floor(Math.random()*256);
+        let blue = Math.floor(Math.random()*256);
+        let redHex= red.toString(16);
+        let greenHex= green.toString(16);
+        let blueHex= blue.toString(16);
+        let randomColor= "#"+redHex+greenHex+blueHex;
+        e.target.style.backgroundColor = randomColor;
+        } while (currentMode== "rainbowMode" && theMouse===true);
+    }
     else { return};
 }
 
 //button active - deactive
-function deactiveButton() {
-    buttons.classname = "";
+function activeButton() {
+    if (currentMode == "color"){ 
+        colorMode.classList.add("active");
+        eraser.classList.remove("active");
+        colorGrabber.classList.remove("active");
+        shading.classList.remove("active");
+        lighten.classList.remove("active");
+        rainbowMode.classList.remove("active");
+    }
+    else if (currentMode== "eraser") {
+        eraser.classList.add("active");
+        colorMode.classList.remove("active");
+        colorGrabber.classList.remove("active");
+        shading.classList.remove("active");
+        lighten.classList.remove("active");
+        rainbowMode.classList.remove("active");
+    }
+    else if (currentMode == "colorGrabber") {
+        colorGrabber.classList.add("active");
+        colorMode.classList.remove("active");
+        eraser.classList.remove("active");
+        shading.classList.remove("active");
+        lighten.classList.remove("active");
+        rainbowMode.classList.remove("active");
+    }
+    else if (currentMode == "shading") {
+        shading.classList.add("active");
+        colorMode.classList.remove("active");
+        colorGrabber.classList.remove("active");
+        eraser.classList.remove("active");
+        lighten.classList.remove("active");
+        rainbowMode.classList.remove("active");
+    }
+    else if(currentMode == "lighten") {
+        lighten.classList.add("active");
+        colorMode.classList.remove("active");
+        colorGrabber.classList.remove("active");
+        shading.classList.remove("active");
+        eraser.classList.remove("active");
+        rainbowMode.classList.remove("active");
+    }
+    else if (currentMode == "rainbowMode") {
+        lighten.classList.remove("active");
+        colorMode.classList.remove("active");
+        colorGrabber.classList.remove("active");
+        shading.classList.remove("active");
+        eraser.classList.remove("active");
+        rainbowMode.classList.add("active")
+    }
+    else { return }
 }
 
-//changing color function
-function color() {
-gridSquare.style.backgroundColor = colorValue;
-}
 
-//rainbow function
+//visible grid
 
-
-//color grabber function (rgb to hex)
-function rgbToHex (r,g,b) {
-    return 
-}
 
 //shading & ligthen function
 
@@ -122,8 +173,10 @@ sizeSlider.onchange = () => {sizeNumber.innerText = sizeSlider.value + " x " + s
 BgColorSelector.onchange = () => {grid.style.backgroundColor = BgColorSelector.value;}
 
 //button's functions
-
 clearGrid.onclick = () => {clearTheGrid();}
-colorMode.onclick = () => {currentMode = "color"; changingTheColor();}
-eraser.onclick = () => {currentMode = "eraser"; changingTheColor();}
-colorGrabber.onclick = () => {currentMode = "colorGrabber" ; changingTheColor();}
+colorMode.onclick = () => {currentMode = "color";activeButton();changingTheColor();}
+eraser.onclick = () => {currentMode = "eraser"; activeButton();changingTheColor();}
+colorGrabber.onclick = () => {currentMode = "colorGrabber" ;activeButton(); changingTheColor();}
+rainbowMode.onclick = () => {currentMode = "rainbowMode" ;activeButton(); changingTheColor();}
+//shading.onclick
+//lighten.onclick
